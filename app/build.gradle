@@ -1,27 +1,41 @@
+//google的Android开发团队编写的插件，能够提供所有关于Android应用和依赖库的构建，打包和测试。
 apply plugin: 'com.android.application'
-
 android {
+    //编译时的api版本
     compileSdkVersion 27
     defaultConfig {
+        //包名（应用市场的唯一标识）
         applicationId "com.gradle.test"
+        //最低的兼容版本
         minSdkVersion 21
+        //目标版本
         targetSdkVersion 27
+        //版本号（版本更新时会增加）
         versionCode 1
+        //版本名（展示给客户端用户看到的）
         versionName "1.0"
+        //AndroidJUnitRunner设为默认的testInstrumentationRunner
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+    //编译打包版本类型
     buildTypes {
         release {
+            //是否混淆开关
             minifyEnabled false
+            //进行混淆的文件
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 }
-
+//各种依赖库（本地依赖，远程依赖）
 dependencies {
+    //本地依赖所有libs文件夹下的jar文件
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //v7库包
     implementation 'com.android.support:appcompat-v7:27.1.1'
+    //约束布局
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    //测试相关
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'

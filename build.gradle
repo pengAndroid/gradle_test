@@ -1,27 +1,33 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
+/**
+ * buildscript：全局的相关属性。
+ * repositories：一些仓库源相关，默认是jcenter中央远程仓库（兼容maven中心仓库，性能更好）
+ * dependencies：定义一些构建过程（例Android gradle plugin ）
+ */
 buildscript {
-    
     repositories {
         google()
         jcenter()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.1.4'
-        
-
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
 }
-
+/**
+ * 用来定义各个模块的默认属性，可在此自己定义task，代表所有project的仓库源
+ */
 allprojects {
     repositories {
         google()
         jcenter()
     }
 }
-
+/**
+ * 一个名为叫clean的任务（名字可自己更改）括号里面代表任务的类型是删除（相当于清除了External Libraries里的包，然后又添加了一次）
+ */
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
